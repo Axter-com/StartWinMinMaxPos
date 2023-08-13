@@ -1,0 +1,34 @@
+Argument Test Value =/path c:\foo\morefoo -l 1234 \w wide mice, rat, cheese
+Read INI file (ExecutableName.exe.ini)
+With following fields:
+ShowWindow=min,max,norm, or any ShowWindow API name (default value is min)
+PosX=Offset of the upper left corner of a window (default value default)
+PosY=Offset of the upper left corner of a window (default value default)
+SizeX=Window width (default value default)
+SizeY=Window height  (default value default)
+Executable=Full path of a target executable. This field only needs to be populated if the target executable doesn't have the name "TheProgramName.Original.exe"
+
+Advanced Fields:
+Title=The title displayed in the title bar if a new console window is created.
+LinkName=The full path of the shortcut file (.lnk)
+AppUserModelID=
+dwXCountChars=
+dwYCountChars=
+dwFillAttribute=
+AddTodwFlags=A number associated with one or more of the following flags:
+	STARTF_FORCEONFEEDBACK (0x00000040)
+	STARTF_FORCEOFFFEEDBACK (0x00000080)
+	STARTF_PREVENTPINNING (0x00002000)
+	STARTF_RUNFULLSCREEN (0x00000020)
+	STARTF_UNTRUSTEDSOURCE (0x00008000)
+	For more information see (https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/ns-processthreadsapi-startupinfoa).
+AddTodwFlags will get OR (added) to the valued calculated by the following field settings:
+If ShowWindow is populated, bit 0x00000001 (STARTF_USESHOWWINDOW) is set.
+If SizeX and SizeY is set, bit 0x00000002 (STARTF_USESIZE) is set.
+If PosX and PosY is set, bit 0x00000004 (STARTF_USEPOSITION) is set.
+If dwXCountChars and dwYCountChars is set, bit 0x00000008 (STARTF_USECOUNTCHARS) is set.
+If dwFillAttribute is set, bit 0x00000010 (STARTF_USEFILLATTRIBUTE) is set.
+If LinkName is populated, bit 0x00000800 (STARTF_TITLEISLINKNAME) is set.
+If AppUserModelID is populated, bit 0x00001000 (STARTF_TITLEISAPPID) is set.
+
+Fields Title, LinkName, and AppUserModelID are exclusive, so only one of these three fields can be populated.
